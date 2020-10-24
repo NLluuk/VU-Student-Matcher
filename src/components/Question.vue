@@ -1,9 +1,7 @@
 <template>
   <v-form>
-    <!-- <v-card-title>{{ question.title }}</v-card-title>
-    <v-card-text>{{ question.text }}</v-card-text> -->
-    <v-card-title>{{ title }}</v-card-title>
-    <v-card-text>{{ text }}</v-card-text>
+    <v-card-title v-if="question.title">{{ question.title }}</v-card-title>
+    <v-card-text v-if="question.text">{{ question.text }}</v-card-text>
     <v-radio-group>
       <v-radio
         v-for="n in 4"
@@ -17,13 +15,10 @@
 
 <script>
 export default {
-  // props: {
-  //   question: Object
-  // },
-  props: ["title", "text"],
-  data: () => ({
-
-  })
+  props: {
+    question: Object
+  },
+  data: () => ({})
 };
 </script>
 

@@ -1,9 +1,6 @@
 <template>
   <v-stepper v-model="e1">
     <v-stepper-header>
-      <!-- <v-stepper-step v-for="n in 4" :key="n" :step="n" :complete="e1 > n">
-        Question {{ n }}
-      </v-stepper-step> -->
       <v-stepper-step
         v-for="question in questions"
         :key="question.title"
@@ -15,7 +12,7 @@
     </v-stepper-header>
     <v-stepper-items v-for="question in questions" :key="question.title">
       <v-stepper-content :step="questions.indexOf(question) + 1">
-        <question :title="question.title" :text="question.text"></question>
+        <question :question="question"></question>
       </v-stepper-content>
     </v-stepper-items>
     <v-btn color="primary" @click="nextStep">
@@ -28,6 +25,7 @@
 </template>
 
 <script>
+//import firebase from "@/firebase";
 import Question from "@/components/Question.vue";
 export default {
   components: { Question },
@@ -37,20 +35,24 @@ export default {
     buttonTitle: "Continue",
     questions: [
       {
-        title: "This is test question #1, just fill in the blanks?",
-        text: "This is a not so short test description"
+        title: "Question 1",
+        text: "The actual questing regarding the matching"
       },
       {
-        title: "This is test question #2, just fill in the blanks?",
-        text: "This is a not so short test description"
+        title: "Question 2",
+        text: "The actual questing regarding the matching"
       },
       {
-        title: "This is test question #3, just fill in the blanks?",
-        text: "This is a not so short test description"
+        title: "Question 3",
+        text: "The actual questing regarding the matching"
       },
       {
-        title: "This is test question #4, just fill in the blanks?",
-        text: "This is a not so short test description"
+        title: "Question 4",
+        text: "The actual questing regarding the matching"
+      },
+      {
+        title: "Question 5",
+        text: "The actual questing regarding the matching"
       }
     ]
   }),
@@ -68,12 +70,16 @@ export default {
         this.isDisabled = true;
       } else if (this.e1 >= this.questions.length) {
         this.buttonTitle = "Submit";
+        this.isDisabled = false;
       } else {
         this.isDisabled = false;
         this.buttonTitle = "Continue";
       }
     }
   }
+  // firestore: {
+  //   questions: firebase.firestore().collection("questions")
+  // }
 };
 </script>
 
