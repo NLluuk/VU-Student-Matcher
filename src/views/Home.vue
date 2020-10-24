@@ -5,9 +5,9 @@
         Question {{ n }}
       </v-stepper-step>
     </v-stepper-header>
-    <v-stepper-items v-for="n in 4" :key="n">
-      <v-stepper-content :step="n">
-        <question title="Question #1" text="test1"></question>
+    <v-stepper-items v-for="question in questions" :key="question.title">
+      <v-stepper-content :step="questions.indexOf(question) + 1">
+        <question :title="question.title" :text="question.text"></question>
       </v-stepper-content>
     </v-stepper-items>
     <v-btn color="primary" @click="nextStep">
@@ -26,6 +26,7 @@ export default {
   data: () => ({
     e1: 1,
     isDisabled: true,
+    currentStep: 1,
     questions: [
       {
         title: "This is test question #1, just fill in the blanks?",
