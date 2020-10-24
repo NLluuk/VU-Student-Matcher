@@ -1,14 +1,14 @@
 <template>
   <v-form>
-    <v-card-title v-if="question.title">{{ question.title }}</v-card-title>
-    <v-card-text v-if="question.text">{{ question.text }}</v-card-text>
-    <v-radio-group>
-      <v-radio
-        v-for="n in 4"
-        :key="n"
-        :label="`Option ${n}`"
-        :value="n"
-      ></v-radio>
+    <v-card-title class="pa-0 ma-0" v-if="question.title">{{ question.title }}</v-card-title>
+    <v-card-text class="pa-0 ma-0" v-if="question.text">{{
+      question.text
+    }}</v-card-text>
+    <v-radio-group v-model="choice" >
+      <v-radio v-if="question.option1" :label="question.option1"></v-radio>
+      <v-radio v-if="question.option2" :label="question.option2"></v-radio>
+      <v-radio v-if="question.option3" :label="question.option3"></v-radio>
+      <v-radio v-if="question.option4" :label="question.option4"></v-radio>
     </v-radio-group>
   </v-form>
 </template>
@@ -18,7 +18,9 @@ export default {
   props: {
     question: Object
   },
-  data: () => ({})
+  data: () => ({
+    choice: null
+  })
 };
 </script>
 

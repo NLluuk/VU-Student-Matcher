@@ -6,6 +6,7 @@
         :key="question.title"
         :step="questions.indexOf(question) + 1"
         :complete="e1 > questions.indexOf(question) + 1"
+        editable
       >
         Question {{ questions.indexOf(question) + 1 }}
       </v-stepper-step>
@@ -35,31 +36,43 @@ export default {
     buttonTitle: "Continue",
     questions: [
       {
-        title: "Question 1",
-        text: "The actual questing regarding the matching"
+        title:
+          "Question #1: How much effort would you like to put into your project? ",
+        text: "Please choose one:",
+        option1: "As little as possible",
+        option2: "minimun input, maximum output!",
+        option3: "Just enough for a 6",
+        option4: "Going for that 10!"
       },
       {
-        title: "Question 2",
-        text: "The actual questing regarding the matching"
+        title:
+          "Question #2: Would you prefer to work with people of the oposite gender?",
+        text: "Please choose one:",
+        option1: "I does not matter with who I work",
+        option2: "I only prefer to work with people of the same gender",
+        option3: "I only prefer to work with people of the oposite gender"
       },
       {
-        title: "Question 3",
-        text: "The actual questing regarding the matching"
-      },
-      {
-        title: "Question 4",
-        text: "The actual questing regarding the matching"
-      },
-      {
-        title: "Question 5",
-        text: "The actual questing regarding the matching"
+        title:
+          "Question #3: Lorem ipsum dolor sit amet, consectetuer adipiscing elit?",
+        text: "Please choose one:",
+        option1: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit.",
+        option2: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit.",
+        option3: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit."
       }
     ]
   }),
   methods: {
+    submit() {
+      console.log("Form has been submitted!");
+    },
     nextStep() {
-      this.e1 == this.e1++;
-      this.checkButtonStatus();
+      if (this.e1 >= this.questions.length) {
+        this.submit();
+      } else {
+        this.e1 == this.e1++;
+        this.checkButtonStatus();
+      }
     },
     previousStep() {
       this.e1 == this.e1--;
@@ -68,7 +81,8 @@ export default {
     checkButtonStatus() {
       if (this.e1 <= 1) {
         this.isDisabled = true;
-      } else if (this.e1 >= this.questions.length) {
+        this.buttonTitle = "Continue";
+      } else if (this.e1 == this.questions.length) {
         this.buttonTitle = "Submit";
         this.isDisabled = false;
       } else {
