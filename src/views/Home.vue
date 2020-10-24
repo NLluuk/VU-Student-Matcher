@@ -34,7 +34,6 @@ export default {
   data: () => ({
     e1: 1,
     isDisabled: true,
-    currentStep: 1,
     questions: [
       {
         title: "This is test question #1, just fill in the blanks?",
