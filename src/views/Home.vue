@@ -1,11 +1,11 @@
 <template>
   <v-stepper v-model="e1">
     <v-stepper-header>
-      <v-stepper-step v-for="n in 15" :key="n" :step="n" :complete="e1 > n">
+      <v-stepper-step v-for="n in 6" :key="n" :step="n" :complete="e1 > n">
         Question {{ n }}
       </v-stepper-step>
     </v-stepper-header>
-    <v-stepper-items v-for="n in 15" :key="n">
+    <v-stepper-items v-for="n in 6" :key="n">
       <v-stepper-content :step="n">
         <question title="Question #1" text="test1"></question>
       </v-stepper-content>
@@ -46,6 +46,10 @@ export default {
       },
       {
         title: "This is  test question #5, just fill in the blanks?",
+        text: "This is a not so short test description"
+      },
+      {
+        title: "This is  test question #6, just fill in the blanks?",
         text: "This is a not so short test description"
       }
     ]
