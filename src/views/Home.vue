@@ -19,7 +19,7 @@
       </v-stepper-content>
     </v-stepper-items>
     <v-btn color="primary" @click="nextStep">
-      Continue
+      {{ buttonTitle }}
     </v-btn>
     <v-btn text @click="previousStep" :disabled="isDisabled">
       Back
@@ -34,6 +34,7 @@ export default {
   data: () => ({
     e1: 1,
     isDisabled: true,
+    buttonTitle: "Continue",
     questions: [
       {
         title: "This is test question #1, just fill in the blanks?",
@@ -65,8 +66,11 @@ export default {
     checkButtonStatus() {
       if (this.e1 <= 1) {
         this.isDisabled = true;
+      } else if (this.e1 >= this.questions.length) {
+        this.buttonTitle = "Submit";
       } else {
         this.isDisabled = false;
+        this.buttonTitle = "Continue";
       }
     }
   }
