@@ -1,11 +1,11 @@
 <template>
   <v-stepper v-model="e1">
     <v-stepper-header>
-      <v-stepper-step v-for="n in 7" :key="n" :step="n" :complete="e1 > n">
+      <v-stepper-step v-for="n in 4" :key="n" :step="n" :complete="e1 > n">
         Question {{ n }}
       </v-stepper-step>
     </v-stepper-header>
-    <v-stepper-items v-for="n in 7" :key="n">
+    <v-stepper-items v-for="n in 4" :key="n">
       <v-stepper-content :step="n">
         <question title="Question #1" text="test1"></question>
       </v-stepper-content>
@@ -13,8 +13,8 @@
     <v-btn color="primary" @click="nextStep">
       Continue
     </v-btn>
-    <v-btn text @click="previousStep">
-      Cancel
+    <v-btn text @click="previousStep" :disabled="isDisabled">
+      Back
     </v-btn>
   </v-stepper>
 </template>
@@ -25,35 +25,22 @@ export default {
   components: { Question },
   data: () => ({
     e1: 1,
-    show: true,
-    currentStep: 1,
+    isDisabled: true,
     questions: [
       {
-        title: "This is  test question #1, just fill in the blanks?",
+        title: "This is test question #1, just fill in the blanks?",
         text: "This is a not so short test description"
       },
       {
-        title: "This is  test question #2, just fill in the blanks?",
+        title: "This is test question #2, just fill in the blanks?",
         text: "This is a not so short test description"
       },
       {
-        title: "This is  test question #3, just fill in the blanks?",
+        title: "This is test question #3, just fill in the blanks?",
         text: "This is a not so short test description"
       },
       {
-        title: "This is  test question #4, just fill in the blanks?",
-        text: "This is a not so short test description"
-      },
-      {
-        title: "This is  test question #5, just fill in the blanks?",
-        text: "This is a not so short test description"
-      },
-      {
-        title: "This is  test question #6, just fill in the blanks?",
-        text: "This is a not so short test description"
-      },
-      {
-        title: "This is  test question #7, just fill in the blanks?",
+        title: "This is test question #4, just fill in the blanks?",
         text: "This is a not so short test description"
       }
     ]
@@ -61,12 +48,18 @@ export default {
   methods: {
     nextStep() {
       this.e1 == this.e1++;
-      this.currentStep = this.currentStep++;
+      this.checkButtonStatus();
     },
-
     previousStep() {
       this.e1 == this.e1--;
-      this.currentStep = this.currentStep--;
+      this.checkButtonStatus();
+    },
+    checkButtonStatus() {
+      if (this.e1 <= 1) {
+        this.isDisabled = true;
+      } else {
+        this.isDisabled = false;
+      }
     }
   }
 };
