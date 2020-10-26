@@ -10,8 +10,11 @@
 
 <script>
 export default {
+  name: "navbar",
   methods: {
-    signOut() {}
+    signOut() {
+      this.$router.push({ name: "login" });
+    }
   }
 };
 </script>

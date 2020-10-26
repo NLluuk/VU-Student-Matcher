@@ -47,7 +47,7 @@ export default {
   }),
   methods: {
     signIn() {
-      this.$router.push({ name: "Home" });
+      this.$router.push({ name: "home" });
     },
     resetPassword() {}
   }
