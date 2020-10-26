@@ -28,6 +28,7 @@
 <script>
 //import firebase from "@/firebase";
 import Question from "@/components/Question.vue";
+//import Navbar from "@/components/Navbar.vue";
 export default {
   components: { Question },
   data: () => ({
@@ -98,4 +99,7 @@ export default {
 </script>
 
 <style>
+html {
+  overflow: hidden;
+}
 </style>
