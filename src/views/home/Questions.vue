@@ -59,7 +59,8 @@ export default {
         text: "Please choose one:",
         option1: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit.",
         option2: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit.",
-        option3: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit."
+        option3: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit.",
+        option4: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit."
       }
     ]
   }),
