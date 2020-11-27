@@ -16,12 +16,12 @@
         <question :question="question"></question>
       </v-stepper-content>
     </v-stepper-items>
-    <v-btn color="primary" @click="nextStep">
-      {{ buttonTitle }}
-    </v-btn>
-    <v-btn text @click="previousStep" :disabled="isDisabled">
-      Back
-    </v-btn>
+    <v-row class="mx-auto pa-2">
+      <v-btn color="primary" @click="nextStep">
+        {{ buttonTitle }}
+      </v-btn>
+      <v-btn text @click="previousStep" :disabled="isDisabled"> Back </v-btn>
+    </v-row>
   </v-stepper>
 </template>
 
@@ -38,12 +38,12 @@ export default {
     questions: [
       {
         title:
-          "Question #1: How much effort would you like to put into your project? ",
+          "Question #111: How much effort would you like to put into your project? ",
         text: "Please choose one:",
         option1: "As little as possible",
         option2: "minimun input, maximum output!",
         option3: "Just enough for a 6",
-        option4: "Going for that 10!"
+        option4: "Going for that 10!",
       },
       {
         title:
@@ -51,7 +51,7 @@ export default {
         text: "Please choose one:",
         option1: "I does not matter with who I work",
         option2: "I only prefer to work with people of the same gender",
-        option3: "I only prefer to work with people of the oposite gender"
+        option3: "I only prefer to work with people of the oposite gender",
       },
       {
         title:
@@ -60,9 +60,9 @@ export default {
         option1: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit.",
         option2: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit.",
         option3: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit.",
-        option4: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit."
-      }
-    ]
+        option4: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit.",
+      },
+    ],
   }),
   methods: {
     submit() {
@@ -91,8 +91,8 @@ export default {
         this.isDisabled = false;
         this.buttonTitle = "Continue";
       }
-    }
-  }
+    },
+  },
   // firestore: {
   //   questions: firebase.firestore().collection("questions")
   // }
