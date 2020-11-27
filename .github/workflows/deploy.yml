@@ -19,7 +19,7 @@ jobs:
         uses: actions/upload-artifact@master
         with:
           name: dist
-          path: dist
+          path: ./dist
   deploy:
     name: Deploy
     needs: build
@@ -30,6 +30,6 @@ jobs:
       - name: Deploy to Firebase
         uses: w9jds/firebase-action@master
         with:
-          args: deploy
+          args: deploy --only hosting
         env:
           FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
