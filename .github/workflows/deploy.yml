@@ -15,6 +15,11 @@ jobs:
         run: yarn install
       - name: Build
         run: yarn build
+      - name: Archive Production Artifact
+        uses: actions/upload-artifact@master
+        with:
+          name: dist
+          path: dist
   deploy:
     name: Deploy
     needs: build
